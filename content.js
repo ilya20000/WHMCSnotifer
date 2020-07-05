@@ -76,18 +76,13 @@ function sec() //выполняется при загрузке страницы
 					msg = msg + 'NEW '+ prioritys[i].alt +'\n\r<br>'+ temp + '<br>\n\r<br>' + checkUrls + '<br>\n\r\n\r<br>';
 					msg = encodeURI(msg);
 					msg = msg.replace(/\&/g, "%26");
-					//console.log('Добавили', cp_inferno);
+					$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
+					msg ='';
 				}//if
 			}//else
 			
 		}//for
-		//console.log('ыыыыыы====',JSON.stringify(cp_inferno));
-		if(msg == ''){
-			console.log('Ничёж не помянялоса');
-		}else{
-			$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
-		}
-		
+	
 		//cp_inferno.myanswered = []; ///////.......убрать
 		//cp_inferno.my = []; ///////.......убрать
 		localStorage.cp_inferno = JSON.stringify(cp_inferno);
