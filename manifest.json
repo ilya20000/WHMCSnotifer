@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "WHMCS Notifer",
+  "version": "1.0",
+  
+  "icons": {
+    "128": "128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "https://cp.inferno.name/admin/*" ],
+      "js": ["jquery-3.5.1.min.js", "content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [      // разрешения
+    "unlimitedStorage","storage", "system.storage","notifications","tabs","https://cp.inferno.name/admin/*"
+  ],
+
+      "browser_action": {
+        "default_title": "WHMCS Notifer",
+        "default_popup": "popup.html"
+    }
+	
+}
