@@ -60,14 +60,25 @@ async function main() //выполняется при загрузке стра�
 					msg = await msg.replace(/\&/g, "%26");
 					msg = await msg.replace(/\#/g, "");
 					msg = encodeURI(msg);
+<<<<<<< HEAD
 					$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
 					//console.log('geeeeeeeeeeeeeeeet');
+=======
+					msg = msg.replace(/\&/g, "%26");
+					$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
+					msg ='';
+>>>>>>> 2cfd3e5876247b3b80686ea0f55b38e4a1b1fd67
 				}//if
 
 			}//else
 			
 		}//for
 	
+<<<<<<< HEAD
+=======
+		//cp_inferno.myanswered = []; ///////.......убрать
+		//cp_inferno.my = []; ///////.......убрать
+>>>>>>> 2cfd3e5876247b3b80686ea0f55b38e4a1b1fd67
 		localStorage.cp_inferno = JSON.stringify(cp_inferno);
 	}else{
 		console.log("смотрим кнопку");
