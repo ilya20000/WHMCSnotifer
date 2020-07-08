@@ -16,7 +16,7 @@ async function main() //выполняется при загрузке стра�
 { 
 	
 
-	if(location.href == "https://cp.inferno.name/admin/supporttickets.php" || location.href == "https://cp.inferno.name/admin/supporttickets.php?filter=1" ){
+	if(location.href == "https://cp.inferno.name/admin/supporttickets.php" || location.href == "https://cp.inferno.name/admin/supporttickets.php?filter=1" || location.href == 'https://cp.mrhost.biz/admin/supporttickets.php' ){
 		//статус
 		statuses = $("#sortabletbl2 > tbody > tr > td:nth-child(6) > span");
 		
@@ -56,8 +56,14 @@ async function main() //выполняется при загрузке стра�
 				if( statuses[i].innerText == "Открыт" || statuses[i].innerText == "Ответ клиента"){
 					// Новый URL заносим его в базу
 					await cp_inferno.urls.push(checkUrls); // заносим url в базу
-
-					msg = 'NEW '+ prioritys[i].alt +'<br>'+ names[i].innerText + '<br><br>' + checkUrls + '<br><br>';
+					if(prioritys[i].alt == 'High'){
+						msg = '📕';
+					}else if(prioritys[i].alt == 'Medium'){
+						msg = '📙';
+					}else{
+						msg = '📘';
+					}
+					msg = '🆕<br> '+ msg +'<br>'+ names[i].innerText + '<br> <br>' + checkUrls + '<br> <br>';
 					msg = await msg.replace(/\#/g, "");
 					msg = encodeURI(msg);
 					msg = await msg.replace(/\&/g, "%26");
