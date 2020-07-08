@@ -46,8 +46,9 @@ async function main() //выполняется при загрузке стра�
 					cp_inferno.watch[myid] = 'viwed';
 
 					msg = '🛎✏️Ответ '+names[i].innerText+' \n\r'+checkUrls+' \n\r';
-					msg = msg.replace(/\&/g, "%26");
-					msg = msg.replace(/\#/g, "");
+					msg = await msg.replace(/\#/g, "");
+					msg = await msg.replace(/\&/g, "%26");
+					msg = encodeURI(msg);
 					$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
 				}//if
 
@@ -57,8 +58,8 @@ async function main() //выполняется при загрузке стра�
 					// Новый URL заносим его в базу
 					await cp_inferno.urls.push(checkUrls); // заносим url в базу
 					msg = 'NEW '+ prioritys[i].alt +'\n\r<br>'+ names[i].innerText + '<br>\n\r<br>' + checkUrls + '<br>\n\r\n\r<br>';
-					msg = await msg.replace(/\&/g, "%26");
 					msg = await msg.replace(/\#/g, "");
+					msg = await msg.replace(/\&/g, "%26");
 					msg = encodeURI(msg);
 					$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
 					//console.log('geeeeeeeeeeeeeeeet');
