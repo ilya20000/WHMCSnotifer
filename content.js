@@ -44,11 +44,10 @@ async function main() //выполняется при загрузке стра�
 				if ( myid > -1 && cp_inferno.watch[myid] == 'yes'){
 					
 					cp_inferno.watch[myid] = 'viwed';
-
-					msg = '🛎✏️Ответ '+names[i].innerText+' \n\r'+checkUrls+' \n\r';
+					msg = '🛎✏️Ответ '+names[i].innerText+' '+checkUrls+' ';
 					msg = await msg.replace(/\#/g, "");
-					msg = await msg.replace(/\&/g, "%26");
 					msg = encodeURI(msg);
+					msg = await msg.replace(/\&/g, "%26");
 					$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
 				}//if
 
@@ -57,10 +56,11 @@ async function main() //выполняется при загрузке стра�
 				if( statuses[i].innerText == "Открыт" || statuses[i].innerText == "Ответ клиента"){
 					// Новый URL заносим его в базу
 					await cp_inferno.urls.push(checkUrls); // заносим url в базу
-					msg = 'NEW '+ prioritys[i].alt +'\n\r<br>'+ names[i].innerText + '<br>\n\r<br>' + checkUrls + '<br>\n\r\n\r<br>';
+
+					msg = 'NEW '+ prioritys[i].alt +'<br>'+ names[i].innerText + '<br><br>' + checkUrls + '<br><br>';
 					msg = await msg.replace(/\#/g, "");
-					msg = await msg.replace(/\&/g, "%26");
 					msg = encodeURI(msg);
+					msg = await msg.replace(/\&/g, "%26");
 					$.get('https://pushmebot.ru/send?key=46c4d1f2b97df24fe0f5f5bdd726c36f&message='+msg);
 					//console.log('geeeeeeeeeeeeeeeet');
 
